@@ -1,0 +1,31 @@
+﻿<Window x:Class="SerialMonitor.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SerialMonitor"
+        xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"    
+        mc:Ignorable="d"
+        Title="MainWindow" Height="543" Width="772">
+    
+    <Window.DataContext>
+        <local:DeviceSerial></local:DeviceSerial>
+    </Window.DataContext>
+    
+    <Grid Margin="0,0,10,-6">
+        <TextBox x:Name="textbox1" HorizontalAlignment="Left" Height="113" Margin="59,58,0,0" TextWrapping="Wrap" Text="{Binding RecevieData}" VerticalAlignment="Top" Width="181" FontSize="20"/>
+        <Button Content="OPEN" HorizontalAlignment="Left" Margin="59,217,0,0" VerticalAlignment="Top" Height="72" Width="181" Click="Button_Click"/>
+        <Button Content="CLSOE" HorizontalAlignment="Left" Margin="59,327,0,0" VerticalAlignment="Top" Height="72" Width="181" Click="Button_Click_1"/>
+        <CheckBox x:Name="LED_Check" Content="LED&#xD;&#xA;" HorizontalAlignment="Left" Margin="59,423,0,0" VerticalAlignment="Top" Height="49" Width="151" FontSize="20" IsChecked="False" Click="LED_Check_Click"/>
+
+        <Grid Margin="288,10,10,10">
+
+            <lvc:CartesianChart>
+                <lvc:CartesianChart.Series>
+                    <lvc:LineSeries Values="{Binding Values}" FlowDirection="LeftToRight"/>
+                </lvc:CartesianChart.Series>
+            </lvc:CartesianChart>
+        </Grid>
+
+    </Grid>
+</Window>

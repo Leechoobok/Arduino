@@ -5,12 +5,12 @@ void setup(){
     pinMode(LED_BUILTIN,OUTPUT);
     Serial.begin(9600);
     time_previous=millis();
-
 }
 
 void loop(){
     time_current=millis();
-    if(time_current - time_previous >=200){
+
+    if(time_current - time_previous >=100){
         time_previous = time_current;
         
         if (put_cnt==100) switch_cnt=true;
