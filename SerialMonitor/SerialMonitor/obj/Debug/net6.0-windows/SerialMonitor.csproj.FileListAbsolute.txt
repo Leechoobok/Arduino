@@ -61,3 +61,4 @@ C:\Users\KOSTA\project\Aduino\SerialMonitor\SerialMonitor\obj\Debug\net6.0-windo
 C:\Users\KOSTA\project\Aduino\SerialMonitor\SerialMonitor\obj\Debug\net6.0-windows\SerialMonitor.csproj.CopyComplete
 C:\Users\KOSTA\project\Aduino\SerialMonitor\SerialMonitor\obj\Debug\net6.0-windows\SerialMonitor.genruntimeconfig.cache
 C:\Users\KOSTA\project\Aduino\SerialMonitor\SerialMonitor\obj\Debug\net6.0-windows\ref\SerialMonitor.dll
+C:\Users\KOSTA\project\Aduino\SerialMonitor\SerialMonitor\bin\Debug\net6.0-windows\CommunityToolkit.Mvvm.dll

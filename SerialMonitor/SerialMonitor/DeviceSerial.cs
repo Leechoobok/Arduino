@@ -1,4 +1,6 @@
-﻿using LiveCharts;
+﻿using CommunityToolkit;
+using CommunityToolkit.Mvvm.ComponentModel;
+using LiveCharts;
 using LiveCharts.Wpf;
 using System;
 using System.Collections.Generic;
@@ -8,51 +10,32 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using System.Threading;
+using System.Windows.Input;
+using CommunityToolkit.Mvvm.Input;
+using System.Windows;
 
 namespace SerialMonitor
 {
- 
-    internal class DeviceSerial : UserControl
+
+    internal class DeviceSerial : IDeviceSerial
     {
 
         SerialPort serialPort = new SerialPort();
+        //public ChartValues<double> Values { get; set; }
+        public event EventHandler DataEvent;
         public DeviceSerial()
         {
-            //values = new ChartValues<double>();
-            /*
-            SeriesCollection = new SeriesCollection//livechart
-            {
-                new LineSeries
-                {
-                    Title = "Series 1",
-                    Values = values
-                    //Values = new ChartValues<double> {1, 2, 3, 4, 5}
 
-                }//livechar data값(막대~)
-                
-            };*/
-            
-            //values.Add(0);
-            /*lineSeries = new LineSeries
-            {
-                
-            };*/
-
-            //values = new ChartValues<double>{RecevieData};
         }
-        /*
-         *Nuget 패키지 설치 LiveCharts.Wpf.
-         * MainWindow.xaml파일에
-         * xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf" 추가
-         * <lvc:CartesianChart Series="{Binding SeriesCollection}"> 추가
-         */
-        
+
+
         public string receiveData = "";
 
-        public string RecevieData { get; set; }
+        public string RecevieData { get; private set; }
 
 
-        public bool Connect(int portName, int baudRate = (int)9600, int DataBits = (int)8, Parity parity=Parity.None, StopBits stopBits=StopBits.One)
+        public bool Connect(int portName, int baudRate = (int)9600, int DataBits = (int)8, Parity parity = Parity.None, StopBits stopBits = StopBits.One)
         {
 
             if (serialPort.IsOpen == false)
@@ -68,17 +51,18 @@ namespace SerialMonitor
             }
             return true;
         }
- 
+
         public bool sendData(string str)
         {
-            if(serialPort.IsOpen==true){
-                serialPort.Write(str); 
+            if (serialPort.IsOpen == true)
+            {
+                serialPort.Write(str);
             }
             else
             {
                 this.Connect(5);
             }
-            
+
 
             return true;
         }
@@ -86,8 +70,12 @@ namespace SerialMonitor
         private void DataReceiveHandler(object sender, SerialDataReceivedEventArgs e)
         {
             SerialPort serialPort = (SerialPort)sender;
-            RecevieData = serialPort.ReadLine();
-            //receiveData = serialPort.ReadExisting();
+            string tmp = serialPort.ReadLine();
+            if (String.IsNullOrEmpty(tmp) == false)
+            {
+                RecevieData = tmp.Trim().ToString();
+                DataEvent(this, EventArgs.Empty);
+            }
         }
 
         public bool Close()

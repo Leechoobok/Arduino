@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "0E/eoet/34GwFfvz/VBMzwaIaPLJKEZtgwLV0scx+0h1UITN48HqmoJ9209ZI/pgRmFZ03ZdBy9Po/aYs6lf+Q==",
+  "dgSpecHash": "WG0p1Lkm300t+YLzXBI4+KKGTLMNYcIDGGhumRgyOLuHOg7NUv8aVcWMmVH3pzMP0D7Mgm8yuIUXPtkwQZJcWQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\KOSTA\\project\\Aduino\\SerialMonitor\\SerialMonitor\\SerialMonitor.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\KOSTA\\.nuget\\packages\\communitytoolkit.mvvm\\8.0.0\\communitytoolkit.mvvm.8.0.0.nupkg.sha512",
     "C:\\Users\\KOSTA\\.nuget\\packages\\livecharts.core\\0.9.8\\livecharts.core.0.9.8.nupkg.sha512",
     "C:\\Users\\KOSTA\\.nuget\\packages\\livecharts.wpf.core\\0.9.8\\livecharts.wpf.core.0.9.8.nupkg.sha512",
     "C:\\Users\\KOSTA\\.nuget\\packages\\runtime.linux-arm.runtime.native.system.io.ports\\6.0.0\\runtime.linux-arm.runtime.native.system.io.ports.6.0.0.nupkg.sha512",

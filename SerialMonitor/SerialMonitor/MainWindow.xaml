@@ -9,23 +9,37 @@
         Title="MainWindow" Height="543" Width="772">
     
     <Window.DataContext>
-        <local:DeviceSerial></local:DeviceSerial>
+        <local:MainWindowViewModel> </local:MainWindowViewModel>
     </Window.DataContext>
-    
-    <Grid Margin="0,0,10,-6">
-        <TextBox x:Name="textbox1" HorizontalAlignment="Left" Height="113" Margin="59,58,0,0" TextWrapping="Wrap" Text="{Binding RecevieData}" VerticalAlignment="Top" Width="181" FontSize="20"/>
-        <Button Content="OPEN" HorizontalAlignment="Left" Margin="59,217,0,0" VerticalAlignment="Top" Height="72" Width="181" Click="Button_Click"/>
-        <Button Content="CLSOE" HorizontalAlignment="Left" Margin="59,327,0,0" VerticalAlignment="Top" Height="72" Width="181" Click="Button_Click_1"/>
-        <CheckBox x:Name="LED_Check" Content="LED&#xD;&#xA;" HorizontalAlignment="Left" Margin="59,423,0,0" VerticalAlignment="Top" Height="49" Width="151" FontSize="20" IsChecked="False" Click="LED_Check_Click"/>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="200"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
-        <Grid Margin="288,10,10,10">
 
-            <lvc:CartesianChart>
-                <lvc:CartesianChart.Series>
-                    <lvc:LineSeries Values="{Binding Values}" FlowDirection="LeftToRight"/>
-                </lvc:CartesianChart.Series>
-            </lvc:CartesianChart>
-        </Grid>
+        <TextBox Grid.Column="0" Grid.Row="0" x:Name="textbox1" HorizontalAlignment="Left" Height="113" Margin="50,30,0,0" TextWrapping="Wrap" Text="{Binding RecevieData}" VerticalAlignment="Top" Width="181" FontSize="20"/>
+        <Button Grid.Column="0" Grid.Row="1" Content="OPEN" 
+                Command="{Binding OpenButtonCommand}"
+                HorizontalAlignment="Left" Margin="59,10,0,0" 
+                VerticalAlignment="Top" Height="72" Width="181"/>
+        <Button Grid.Column="0" Grid.Row="1" Content="CLSOE" HorizontalAlignment="Left" Margin="59,100,0,0" 
+                Command="{Binding CloseButtonCommand}"
+                VerticalAlignment="Top" Height="72" Width="181"/>
+        <CheckBox Grid.Column="1" Grid.Row="0" x:Name="LED_Check" 
+                  Content="LED&#xD;&#xA;" HorizontalAlignment="Left" 
+                  Margin="050 ,50,0,0" VerticalAlignment="Top" Height="49" Width="151" 
+                  FontSize="20" IsChecked="False"/>
+
+
+
+        <lvc:CartesianChart Grid.Column="1" Grid.Row="1" Series="{Binding SeriesCollection}">
+            <!--<lvc:LineSeries Values="{Binding Values}" FlowDirection="LeftToRight"/>-->
+        </lvc:CartesianChart>
 
     </Grid>
 </Window>
